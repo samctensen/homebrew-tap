@@ -1,8 +1,8 @@
 class Cusco < Formula
   desc "Tells any program which of your local coding agents needs you"
   homepage "https://github.com/samctensen/cusco"
-  url "https://github.com/samctensen/cusco/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "c2691d40033e798535af847917b55af066d508d901b0dec7c8cb4f406d33e225"
+  url "https://github.com/samctensen/cusco/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "90dd130303b5468090660af44bb0390b694d142d361eb5756946a3029427ba11"
   license "MIT"
   head "https://github.com/samctensen/cusco.git", branch: "main"
 
@@ -24,7 +24,7 @@ class Cusco < Formula
 
   service do
     run [opt_bin/"cusco", "serve"]
-    keep_alive true
+    keep_alive successful_exit: false
     log_path var/"log/cusco.log"
     error_log_path var/"log/cusco.log"
   end
