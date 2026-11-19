@@ -1,11 +1,12 @@
 class Cusco < Formula
   desc "Tells any program which of your local coding agents needs you"
   homepage "https://github.com/samctensen/cusco"
-  url "https://github.com/samctensen/cusco/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "90dd130303b5468090660af44bb0390b694d142d361eb5756946a3029427ba11"
+  url "https://github.com/samctensen/cusco/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "7d51b07324f6b5a24ed1b33465b44bb6fea7feb448cd99e64cdc9ee2a171b822"
   license "MIT"
   head "https://github.com/samctensen/cusco.git", branch: "main"
 
+  # Bottled by this tap's CI, so only --build-from-source and --HEAD need rust.
   depends_on "rust" => :build
   depends_on :macos
 
@@ -15,18 +16,14 @@ class Cusco < Formula
 
   def caveats
     <<~EOS
+      Start Cusco now, and at every login:
+        cusco start
+        cusco autostart on
       Connect your coding agents to Cusco:
         cusco setup
       In Codex, run /hooks and trust the new hooks.
       In Grok Build, trust the folders you work in.
     EOS
-  end
-
-  service do
-    run [opt_bin/"cusco", "serve"]
-    keep_alive successful_exit: false
-    log_path var/"log/cusco.log"
-    error_log_path var/"log/cusco.log"
   end
 
   test do
