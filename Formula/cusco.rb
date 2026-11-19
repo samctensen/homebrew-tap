@@ -6,6 +6,7 @@ class Cusco < Formula
   license "MIT"
   head "https://github.com/samctensen/cusco.git", branch: "main"
 
+  # Bottled by this tap's CI, so only --build-from-source and --HEAD need rust.
   depends_on "rust" => :build
   depends_on :macos
 
